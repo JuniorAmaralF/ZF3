@@ -10,6 +10,7 @@ return [
             'core.transport.smtp' => TransportSmtpFactory::class
         ]
     ],
+    //esta sobscrevendo o factory do zend pelo nosso personalizado
     'view_helpers' => [
         'factories' => [ 
             FormElementErrors::class => FormElementErrosFactory::class

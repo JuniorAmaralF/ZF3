@@ -26,7 +26,7 @@ abstract class AbstractCoreMOdelTable
     }
     
     public function save(array $data)
-    {
+    {   //quando e um update
         if(isset($data['id'])) {
             $id = (int) $data['id'];
             
