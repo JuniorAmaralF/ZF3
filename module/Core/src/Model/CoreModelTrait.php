@@ -8,7 +8,7 @@ trait CoreModelTrait
 {
     public function exchangeArray(array $data)
     {
-        (new Reflection())->hydrate($data.$this);
+        (new Reflection())->hydrate($data,$this);
     }
     
     public function getArrayCopy()
