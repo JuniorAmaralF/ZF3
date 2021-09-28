@@ -42,6 +42,8 @@ return [
     ],
     'view_manager' => [
         'template_map' => [
+            'user/layout/layout' => __DIR__.'/../view/layout/layout.phtml',
+            
             'user/index/confirmed-email' => __DIR__.'/../view/user/index/confirmed-email.phtml',
             'user/index/new-password' => __DIR__.'/../view/user/index/new-password.phtml',
             'user/index/recovered-password' => __DIR__.'/../view/user/index/recovered-password.phtml',

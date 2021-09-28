@@ -1,1 +1,38 @@
-<h1>Register</h1>
+<div class="register-logo">
+        <p><b>ZF3</b> na prática</p>
+</div>
+
+<div class="register-box-body">
+        <p class="login-box-msg">Registrar novo membro</p>
+
+        <form action="" method="POST">
+            <div class="form-group has-feedback">
+                <input type="text" name="name" class="form-control" placeholder="Full name" maxlength="120">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" name="email" class="form-control" placeholder="Email" maxlength="255">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" name="password" class="form-control" placeholder="Password" maxlength="48">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" name="verifypassword" class="form-control" placeholder="Retype password" maxlength="48">
+                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            </div>
+
+            <div class="row">
+                <div class="pull-right col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+                </div>
+            </div>
+        </form>
+        
+        <!-- user/ significa minha rota literal
+            default significa minha rota segment-->
+
+        <a href="#" class="text-center">Eu já tenho cadastro</a><br>
+        <a href="<?= $this->url('user/default',['controller' => 'Index','action' => 'recovered-password']);?>">Esqueci a minha senha</a>
+</div>
