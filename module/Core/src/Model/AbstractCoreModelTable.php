@@ -5,7 +5,7 @@ namespace Core\Model;
 use RuntimeException;
 use Zend\Db\TableGateway\TableGatewayInterface;
 
-abstract class AbstractCoreMOdelTable
+abstract class AbstractCoreModelTable
 {
     protected $tableGateway;
     
