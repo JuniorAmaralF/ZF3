@@ -20,7 +20,7 @@ return [
         'form_element_erros' => [
             'message_open_format' => '<el class="list-unstyled"><li class="help-block">',
             'message_separator_string' => '</li><li class="help-block>',
-            'message_close_string' => '</li><li>'
+            'message_close_string' => '</li><li>',
         ],
         'flashmessenger' => [
             'message_open_format'      => '<div%s><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><ul><li>',
