@@ -27,9 +27,7 @@ class FormElementErrosFactory implements FactoryInterface
             if (isset($configHelper['message_close_string'])){
                 $helper->setMessageCloseString($configHelper['message_close_string']);
             }
-            
         }
-        
         return $helper;
         
     }
