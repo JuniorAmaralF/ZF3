@@ -14,8 +14,8 @@ class FormElementErrosFactory implements FactoryInterface
         $helper = new FormElementErrors();
         
         $config = $container->get('config');
-        if (isset($config['view_helper_config']['form_element_erros'])) {
-            $configHelper = $config['view_helper_config']['form_element_erros'];
+        if (isset($config['view_helper_config']['form_element_errors'])) {
+            $configHelper = $config['view_helper_config']['form_element_errors'];
             if (isset($configHelper['message_open_format'])){
                 $helper->setMessageOpenFormat($configHelper['message_open_format']);
             }

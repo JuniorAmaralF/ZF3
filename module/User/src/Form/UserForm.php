@@ -46,7 +46,7 @@ class UserForm extends Form
 
         $this->add($password);
 
-        $verifyPassword = new Password('verifyPassword');
+        $verifyPassword = new Password('verifypassword');
         $verifyPassword->setAttributes([
             'placeholder' => 'Retype password',
             'class' => 'form-control',

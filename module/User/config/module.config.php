@@ -2,11 +2,11 @@
 //vai criar as rotas aqui
 namespace User;
 
+use User\Controller\Factory\IndexControllerFactory;
 use User\Model\Factory\UserTableFactory;
 use User\Model\UserTable;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
@@ -39,7 +39,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class
+            Controller\IndexController::class =>IndexControllerFactory::class
         ]
     ],
     'service_manager' => [

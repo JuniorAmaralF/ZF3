@@ -5,42 +5,28 @@
 <div class="register-box-body">
         <p class="login-box-msg">Registrar novo membro</p>
 
-       <?php 
-            echo $this->flashMessenger()->render('error',['alert alert-danger alert-dismissble']);
-            echo $this->flashMessenger()->render('success',['alert alert-success alert-dismissible']);
-        ?>
-        
-        <?php // abrindo a tag do form
-         echo $this->form()->openTag($this->form);?>
-            <!-- operador ternario-->
-        <div class="form-group<?php echo $this->formElementErrors($this->form->get('name')) ? 'has-error' : ''; ?> has-feedback">
-             <!-- colando um input do tipo texto no formulario  chamado name-->  
+            <?php echo $this->form()->openTag($this->form); ?>
+        <div class="form-group<?php echo $this->formElementErrors($this->form->get('name')) ? ' has-error' : ''; ?> has-feedback">
             <?php echo $this->formText($this->form->get('name')); ?>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <?php echo $this->formElementErros($this->form->get('name'));?>
+            <?php echo $this->formElementErrors($this->form->get('name')); ?>
         </div>
-
-        <div class="form-group<?php echo $this->formElementErrors($this->form->get('email')) ? 'has-error' : ''; ?> has-feedback">
-             <!-- colando um input do tipo texto no formulario  chamado email-->  
+        <div class="form-group<?php echo $this->formElementErrors($this->form->get('email')) ? ' has-error' : ''; ?> has-feedback">
             <?php echo $this->formEmail($this->form->get('email')); ?>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <?php echo $this->formElementErros($this->form->get('email'));?>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <?php echo $this->formElementErrors($this->form->get('email')); ?>
         </div>
-
-        <div class="form-group<?php echo $this->formElementErrors($this->form->get('password')) ? 'has-error' : ''; ?> has-feedback">
-             <!-- colando um input do tipo texto no formulario  chamado password-->  
+        <div class="form-group<?php echo $this->formElementErrors($this->form->get('password')) ? ' has-error' : ''; ?> has-feedback">
             <?php echo $this->formPassword($this->form->get('password')); ?>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <?php echo $this->formElementErros($this->form->get('password'));?>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <?php echo $this->formElementErrors($this->form->get('password')); ?>
         </div>
-
-        <div class="form-group<?php echo $this->formElementErrors($this->form->get('verifypassword')) ? 'has-error' : ''; ?> has-feedback">
-             <!-- colando um input do tipo texto no formulario  chamado verifypassword-->  
+        <div class="form-group<?php echo $this->formElementErrors($this->form->get('verifypassword')) ? ' has-error' : ''; ?> has-feedback">
             <?php echo $this->formPassword($this->form->get('verifypassword')); ?>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <?php echo $this->formElementErros($this->form->get('verifypassword'));?>
+            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+            <?php echo $this->formElementErrors($this->form->get('verifypassword')); ?>
         </div>
-        <? echo $this->formHidden($this->form->get('csrf')); ?>
+        <?php echo $this->formHidden($this->form->get('csrf'));  ?>
         <div class="row">
             <div class="pull-right col-xs-4">
                 <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>

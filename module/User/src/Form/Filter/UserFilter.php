@@ -50,14 +50,14 @@ class UserFilter extends InputFilter
         $password->getValidatorChain()->addValidator(new NotEmpty())
         ->addValidator(new StringLength(['max' => 48 , 'min' => 5]))
         ->addValidator(new Identical([
-            'token' => 'verifyPassword',
+            'token' => 'verifypassword',
             'messages' => [
                 'notSame' => 'As senha fornecidas nao combinam'
             ]
         ]));
         $this->add($password);
 
-        $verifyPassword = new Input('verifyPassword');
+        $verifyPassword = new Input('verifypassword');
         $verifyPassword->setRequired(true)
             ->getFilterChain()->attachByName('stringtrim')
             ->attachByName('StripTags');

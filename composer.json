@@ -29,7 +29,8 @@
         "zendframework/zend-paginator": "^2.8",
         "zendframework/zend-i18n": "^2.10",
         "zendframework/zend-mvc-form": "^1.0",
-        "zendframework/zend-i18n-resources": "^2.6"
+        "zendframework/zend-i18n-resources": "^2.6",
+        "zendframework/zend-mvc-plugin-flashmessenger": "^1.2"
     },
     "autoload": {
         "psr-4": {
