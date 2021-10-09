@@ -14,13 +14,16 @@ class UserTable extends AbstractCoreModelTable
         if(isset($data['token'])) {
             $data['email_confirmed'] = true;
             unset($data['password']);
+        }else {
+            $data['email_confirmed'] = 0;
         }
+
         //criptografia a senha
         if(isset($data['password'])){
             $data['password'] = (new Bcrypt())->create($data['password']); 
         }
 
-        if (!isset($data['id']) || (count($data) ==2 ) && array_search('email',array_keys($data))){
+        if (!isset($data['id']) || (count($data) ==2  && array_search('email',array_keys($data)))){
             $token = $this->generateToken();
         }
 

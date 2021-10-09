@@ -26,7 +26,14 @@ abstract class AbstractCoreModelTable
     }
     
     public function save(array $data)
-    {   //quando e um update
+    {   
+        unset(
+            $data['csrf'],
+            $data['verifypassword']
+        );
+       // die();
+       // $data['email_confirmed'] = 0;
+        //quando e um update
         if(isset($data['id'])) {
             $id = (int) $data['id'];
             
