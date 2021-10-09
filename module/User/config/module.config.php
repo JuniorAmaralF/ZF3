@@ -29,7 +29,7 @@ return [
                             'route' => '[/:action][/token/:token]',
                             'constraints' => [
                                 'action' => '[a-zA-z][a-zA-z0-9_-]*',
-                                'token' => '[[a-f0-9]{32}]$'
+                                'token' => '[a-f0-9]{32}$'
                             ]
                         ]
                     ]
