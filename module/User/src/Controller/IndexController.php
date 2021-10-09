@@ -42,8 +42,9 @@ class IndexController extends AbstractActionController
                        sprintf('Confirme seu registro no email "%s"', $data['email'])
                    );
                } catch (Exception $exception){
-                echo $exception->getTraceAsString();
-                die();
+                $this->flashMessenger()->addErrorMessage(
+                    $exception->getMessage()
+                );
                }
 
                return $this->redirect()->refresh();
@@ -70,6 +71,22 @@ class IndexController extends AbstractActionController
 
     public function confirmedEmailAction()
     {
-        return new ViewModel();
+       $token = $this->params()->fromRoute('token',null);
+    
+       try {
+
+            $user = $this->userTable->getUserByToken($token);
+            $this->userTable->save($user->getArrayCopy());
+
+            $this->flashMessenger()->addSucessMessage(
+                'Conta confirmada com sucesso!'  
+            );
+
+       } catch (Exception $exception){
+
+        $this->flashMessenger()->addErrorMessage($exception->getMessage());
+        //rota aidna p´recisa ser criada 
+        return $this->redirect()->toRoute('auth.login');
+       }
     }
 }
