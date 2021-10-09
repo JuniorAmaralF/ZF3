@@ -5,6 +5,12 @@
 <div class="register-box-body">
         <p class="login-box-msg">Registrar novo membro</p>
 
+            <?php
+                echo $this->flashMessenger()->render('error', ['alert alert-danger alert-dismissible']);
+                echo $this->flashMessenger()->render('success', ['alert alert-success alert-dismissible']);
+            ?>
+
+
             <?php echo $this->form()->openTag($this->form); ?>
         <div class="form-group<?php echo $this->formElementErrors($this->form->get('name')) ? ' has-error' : ''; ?> has-feedback">
             <?php echo $this->formText($this->form->get('name')); ?>
