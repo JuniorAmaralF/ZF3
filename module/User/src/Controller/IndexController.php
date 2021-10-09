@@ -33,7 +33,7 @@ class IndexController extends AbstractActionController
                    $user = $this->userTable->save($data);
 
                    $this->getEventManager()->trigger(
-                       __FUNCTION__.'post',
+                       __FUNCTION__.'.post',
                        $this,
                        ['data' => $user]
                    );
