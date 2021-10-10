@@ -3,6 +3,7 @@
 namespace User\Controller;
 
 use Exception;
+use User\Form\NewPassword;
 use User\Form\UserForm;
 use User\Model\UserTable;
 use Zend\Mvc\Controller\AbstractActionController;
@@ -60,7 +61,32 @@ class IndexController extends AbstractActionController
     public function recoveredPasswordAction()
     {
         $this->layout()->setTemplate('user/layout/layout');
-        return new ViewModel();
+        $form = new NewPassword();
+
+        //se a requeste for um post
+        if($this->getRequest()->isPost()) {
+            $form->setData($this->getRequest()->getPost());
+
+            if($form->isValid()){
+                $email = $form->getData()['email'];
+
+                $this->getEventManager()->trigger(
+                    __FUNCTION__.'.post',
+                    $this,
+                    ['data' => $email]
+                );
+
+                $this->flashMessenger()->addSuccessMessage(
+                    'Confirme sua solicitação no email informado'
+                );     
+                
+                return $this->redirect()->refresh();
+            }
+        }
+
+        return new ViewModel([
+            'form' => $form->prepare()
+        ]);
     }
 
     public function newPasswordAction()
@@ -78,7 +104,7 @@ class IndexController extends AbstractActionController
             $user = $this->userTable->getUserByToken($token);
             $this->userTable->save($user->getArrayCopy());
 
-            $this->flashMessenger()->addSucessMessage(
+            $this->flashMessenger()->addSuccessMessage(
                 'Conta confirmada com sucesso!'  
             );
 

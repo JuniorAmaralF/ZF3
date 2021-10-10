@@ -2,10 +2,11 @@
 
 namespace User\Listener;
 
-use Core\Stdlib\CurrentUrl;
 use Exception;
+use Core\Stdlib\CurrentUrl;
 use User\Controller\IndexController;
 use User\Mail\Mail;
+use User\Model\UserTable;
 use Zend\EventManager\AbstractListenerAggregate;
 use Zend\EventManager\Event;
 use Zend\EventManager\EventManagerInterface;
@@ -58,12 +59,12 @@ class SendRecoverPasswordListener extends AbstractListenerAggregate
             $data['ip'] = $controller->getRequest()->getServer('REMOTE_ADDR');
             $data['host'] = $this->getUrl($controller->getRequest());
     
-            $mail = new Mail($transport,$view,'user/mail/recover-password');
+            $mail = new Mail($transport,$view,'user/mailer/recover-password');
             $mail->setSubject('Nova senha, Help Desk ZF3 na pratica')
-            ->setTo(strtolower(trim($user->email)))
-            ->setData($data)
-            ->prepare()
-            ->send();
+                ->setTo(strtolower(trim($user->email)))
+                ->setData($data)
+                ->prepare()
+                ->send();
 
         }
             catch (Exception $exception){

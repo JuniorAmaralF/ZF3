@@ -2,6 +2,7 @@
 
 namespace User;
 
+use User\Listener\SendRecoverPasswordListener;
 use User\Listener\SendRegisterListener;
 use Zend\EventManager\EventInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
@@ -20,6 +21,7 @@ class Module implements BootstrapListenerInterface
         $serviceManager = $e->getApplication()->getServiceManager();
 
         (new SendRegisterListener($serviceManager))->attach($eventManager,100);
+        (new SendRecoverPasswordListener($serviceManager))->attach($eventManager,100);
     }
 
 }
