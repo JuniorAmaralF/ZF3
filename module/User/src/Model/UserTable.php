@@ -15,7 +15,7 @@ class UserTable extends AbstractCoreModelTable
             $data['email_confirmed'] = true;
             unset($data['password']);
         }else {
-            $data['email_confirmed'] = 0;
+          //   $data['email_confirmed'] = 0;
         }
 
         //criptografia a senha
