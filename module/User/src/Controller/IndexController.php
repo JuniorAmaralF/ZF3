@@ -91,8 +91,56 @@ class IndexController extends AbstractActionController
 
     public function newPasswordAction()
     {
-        $this->layout()->setTemplate('user/layout/layout');
-        return new ViewModel();
+
+       try  {
+           $token = $this->params()->fromRoute('token');
+
+           $user = $this->userTable->getUserByToken($token);
+
+            $this->layout()->setTemplate('user/layout/layout');
+
+            if($this->getRequest()->isPost()){
+                $this->userForm->setValidationGroup(['password','verifypassword']);
+                //populando o formulario
+                $this->userForm->setData($this->getRequest()->getPost());
+                //verifica se o formulario e valido 
+                if($this->userForm->isValid()){
+                    $password = $this->userForm->getData()['password'];
+
+                    try{
+                        $this->userTable->save([
+                            'id' => $user->id,
+                            'password' => $password
+                        ]);
+
+                        $this->flashMessenger()->addSuccessMessage(
+                            'Senha alterado com sucesso!'
+                        );
+
+                        return $this->redirect()->toRoute('auth.login');
+ 
+                    } catch (Exception $exception){
+
+                        $this->flashMessenger()->addErrorMessage($exception->getMessage());
+                        return $this->redirect()->refresh();
+                    }
+                }
+
+            }
+
+            return new ViewModel([
+                'form' => $this->userForm->prepare()
+            ]);
+
+       } catch (Exception $exception){
+
+        $this->flashMessenger()->addErrorMessage($exception->getMessage());
+       
+        return $this->redirect()->toRoute('auth.login');
+
+       }
+   
+       
     }
 
     public function confirmedEmailAction()
