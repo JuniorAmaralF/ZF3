@@ -36,6 +36,7 @@
         "psr-4": {
             "Core\\": "module/Core/src/",
             "User\\": "module/User/src/",
+            "Auth\\": "module/Auth/src/",
             "Application\\": "module/Application/src/"
         }
     },
