@@ -1,6 +1,10 @@
 <?php
+
+
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\AdapterServiceFactory;
+use Auth\Authentication\Factory\AuthenticationFactory;
+use Zend\Authentication\AuthenticationService;
 
 /**
  * If you need an environment-specific system or application configuration,
@@ -14,9 +18,14 @@ return [
 
     // These are various options for the listeners attached to the ModuleManager
     'module_listener_options' => [
-        
-         // use composer autoloader instead of zend-loader
-        'use_zend_loader' => false,
+        // This should be an array of paths in which modules reside.
+        // If a string key is provided, the listener will consider that a module
+        // namespace, the value of that key the specific path to that module's
+        // Module class.
+        'module_paths' =>[
+            './module',
+            './vendor',
+        ],
         
         // An array of paths from which to glob configuration files after
         // modules are loaded. These effectively override configuration
@@ -63,6 +72,13 @@ return [
     // Initial configuration with which to seed the ServiceManager.
     // Should be compatible with Zend\ServiceManager\Config.
      'service_manager' => [
-         Adapter::class => AdapterServiceFactory::class
+        'aliases' => [
+            'translator' => 'MvcTranslator',
+        ],
+
+        'factories' => [
+            Adapter::class => AdapterServiceFactory::class,
+            AuthenticationService::class => AuthenticationFactory::class
+        ]
      ],
 ];
