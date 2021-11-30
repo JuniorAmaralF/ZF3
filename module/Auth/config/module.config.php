@@ -2,6 +2,7 @@
 
 namespace Auth;
 
+use Auth\Controller\Factory\IndexControllerFactory;
 use Zend\Router\Http\Literal;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
@@ -12,7 +13,7 @@ return [
                 'type' => Literal::class,
                 'options' =>[
                     'route' => '/login',
-                    'default' => [
+                    'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'login'
                     ]
@@ -22,7 +23,7 @@ return [
                 'type' => Literal::class,
                 'options' =>[
                     'route' => '/logout',
-                    'default' => [
+                    'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action' => 'logout'
                     ]
@@ -34,8 +35,15 @@ return [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class
         ]
+    ],
+    'view_manager' => [
+        'template_map' => [
+            'auth/index/login' => __DIR__.'/../view/auth/index/login.phtml',
+        ],
+        'template_path_stack' => [
+            __DIR__.'/../view',
+        ]
     ]
-
 ];
 
-?>
+

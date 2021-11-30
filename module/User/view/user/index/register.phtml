@@ -42,6 +42,6 @@
 
         <!-- user/ significa minha rota literal
             default significa minha rota segment-->
-        <a href="#" class="text-center">Eu já tenho cadastro</a><br>
+        <a href="<?= $this->url('user/default');?>" class="text-center" class="text-center">Eu já tenho cadastro</a><br>
         <a href="<?= $this->url('user/default',['controller' => 'Index','action' => 'recovered-password']);?>">Esqueci a minha senha</a>
 </div>

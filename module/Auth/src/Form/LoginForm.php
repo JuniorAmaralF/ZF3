@@ -2,7 +2,7 @@
 
 namespace Auth\Form;
 
-use Auth\Form\Filer\LoginFilter;
+use Auth\Form\Filter\LoginFilter;
 use Zend\Form\Element\Csrf;
 use Zend\Form\Element\Email;
 use Zend\Form\Element\Password;

@@ -2,14 +2,20 @@
 
 namespace Auth\Controller;
 
+use Auth\Form\LoginForm;
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Mvc\Console\View\ViewModel;
+use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
     public function loginAction()
     {
-        return new ViewModel();
+        $this->layout()->setTemplate('user/layout/layout');
+        $form = new LoginForm();
+
+        return new ViewModel([
+            'form' => $form->prepare()
+        ]);
     }
 
     public function logoutAction()
